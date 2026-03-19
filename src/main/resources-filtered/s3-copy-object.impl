@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<implementation:connectorImplementation xmlns:implementation="http://www.bonitasoft.org/ns/connector/implementation/6.0">
+  <implementationId>${copy-object.impl.id}</implementationId>
+  <implementationVersion>${copy-object.impl.version}</implementationVersion>
+  <definitionId>${copy-object.def.id}</definitionId>
+  <definitionVersion>${copy-object.def.version}</definitionVersion>
+  <implementationClassname>${copy-object.main-class}</implementationClassname>
+  <hasSources>false</hasSources>
+  <description>AWS S3 Copy Object connector implementation</description>
+${connector-dependencies}
+</implementation:connectorImplementation>

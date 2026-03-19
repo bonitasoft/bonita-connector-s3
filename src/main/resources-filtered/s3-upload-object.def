@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition:ConnectorDefinition
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1">
+  <id>${upload-object.def.id}</id>
+  <version>${upload-object.def.version}</version>
+  <icon>s3-icon.png</icon>
+  <category icon="s3-icon.png" id="AWS S3"/>
+
+  <!-- Connection inputs -->
+  <input name="accessKeyId" type="java.lang.String" mandatory="false"/>
+  <input name="secretAccessKey" type="java.lang.String" mandatory="false"/>
+  <input name="sessionToken" type="java.lang.String" mandatory="false"/>
+  <input name="region" type="java.lang.String" mandatory="true"/>
+  <input name="useDefaultCredentialChain" type="java.lang.Boolean" mandatory="false" defaultValue="false"/>
+  <input name="connectTimeout" type="java.lang.Integer" mandatory="false" defaultValue="30000"/>
+  <input name="readTimeout" type="java.lang.Integer" mandatory="false" defaultValue="60000"/>
+
+  <!-- Operation inputs -->
+  <input name="bucketName" type="java.lang.String" mandatory="true"/>
+  <input name="objectKey" type="java.lang.String" mandatory="true"/>
+  <input name="fileContentBase64" type="java.lang.String" mandatory="true"/>
+  <input name="contentType" type="java.lang.String" mandatory="false" defaultValue="application/octet-stream"/>
+  <input name="storageClass" type="java.lang.String" mandatory="false" defaultValue="STANDARD"/>
+  <input name="metadata" type="java.util.Map" mandatory="false"/>
+  <input name="serverSideEncryption" type="java.lang.String" mandatory="false"/>
+
+  <!-- Outputs -->
+  <output name="success" type="java.lang.Boolean"/>
+  <output name="errorMessage" type="java.lang.String"/>
+  <output name="objectUrl" type="java.lang.String"/>
+  <output name="eTag" type="java.lang.String"/>
+  <output name="versionId" type="java.lang.String"/>
+
+  <!-- Pages -->
+  <page id="connectionPage">
+    <widget xsi:type="definition:Password" id="accessKeyIdWidget" inputName="accessKeyId"/>
+    <widget xsi:type="definition:Password" id="secretAccessKeyWidget" inputName="secretAccessKey"/>
+    <widget xsi:type="definition:Password" id="sessionTokenWidget" inputName="sessionToken"/>
+    <widget xsi:type="definition:Select" id="regionWidget" inputName="region">
+      <items>us-east-1</items>
+      <items>us-east-2</items>
+      <items>us-west-1</items>
+      <items>us-west-2</items>
+      <items>eu-west-1</items>
+      <items>eu-west-2</items>
+      <items>eu-west-3</items>
+      <items>eu-central-1</items>
+      <items>ap-southeast-1</items>
+      <items>ap-southeast-2</items>
+      <items>ap-northeast-1</items>
+    </widget>
+    <widget xsi:type="definition:Checkbox" id="useDefaultCredentialChainWidget" inputName="useDefaultCredentialChain"/>
+    <widget xsi:type="definition:Text" id="connectTimeoutWidget" inputName="connectTimeout"/>
+    <widget xsi:type="definition:Text" id="readTimeoutWidget" inputName="readTimeout"/>
+  </page>
+  <page id="operationPage">
+    <widget xsi:type="definition:Text" id="bucketNameWidget" inputName="bucketName"/>
+    <widget xsi:type="definition:Text" id="objectKeyWidget" inputName="objectKey"/>
+    <widget xsi:type="definition:TextArea" id="fileContentBase64Widget" inputName="fileContentBase64"/>
+    <widget xsi:type="definition:Text" id="contentTypeWidget" inputName="contentType"/>
+  </page>
+  <page id="configurationPage">
+    <widget xsi:type="definition:Select" id="storageClassWidget" inputName="storageClass">
+      <items>STANDARD</items>
+      <items>INTELLIGENT_TIERING</items>
+      <items>STANDARD_IA</items>
+      <items>ONEZONE_IA</items>
+      <items>GLACIER_IR</items>
+      <items>GLACIER</items>
+      <items>DEEP_ARCHIVE</items>
+    </widget>
+    <widget xsi:type="definition:RadioGroup" id="serverSideEncryptionWidget" inputName="serverSideEncryption">
+      <choices>AES256</choices>
+      <choices>aws:kms</choices>
+    </widget>
+  </page>
+  <page id="advancedPage">
+    <widget xsi:type="definition:Array" id="metadataWidget" inputName="metadata"/>
+  </page>
+</definition:ConnectorDefinition>
