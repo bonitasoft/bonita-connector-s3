@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition:ConnectorDefinition
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1">
+  <id>${copy-object.def.id}</id>
+  <version>${copy-object.def.version}</version>
+  <icon>s3-icon.png</icon>
+  <category icon="s3-icon.png" id="AWS S3"/>
+
+  <!-- Connection inputs -->
+  <input name="accessKeyId" type="java.lang.String" mandatory="false"/>
+  <input name="secretAccessKey" type="java.lang.String" mandatory="false"/>
+  <input name="sessionToken" type="java.lang.String" mandatory="false"/>
+  <input name="region" type="java.lang.String" mandatory="true"/>
+  <input name="useDefaultCredentialChain" type="java.lang.Boolean" mandatory="false" defaultValue="false"/>
+  <input name="connectTimeout" type="java.lang.Integer" mandatory="false" defaultValue="30000"/>
+  <input name="readTimeout" type="java.lang.Integer" mandatory="false" defaultValue="60000"/>
+
+  <!-- Operation inputs -->
+  <input name="sourceBucketName" type="java.lang.String" mandatory="true"/>
+  <input name="sourceObjectKey" type="java.lang.String" mandatory="true"/>
+  <input name="sourceVersionId" type="java.lang.String" mandatory="false"/>
+  <input name="destinationBucketName" type="java.lang.String" mandatory="true"/>
+  <input name="destinationObjectKey" type="java.lang.String" mandatory="true"/>
+  <input name="storageClass" type="java.lang.String" mandatory="false"/>
+  <input name="replaceMetadata" type="java.lang.Boolean" mandatory="false" defaultValue="false"/>
+  <input name="newMetadata" type="java.util.Map" mandatory="false"/>
+
+  <!-- Outputs -->
+  <output name="success" type="java.lang.Boolean"/>
+  <output name="errorMessage" type="java.lang.String"/>
+  <output name="destinationObjectKey" type="java.lang.String"/>
+  <output name="destinationObjectUrl" type="java.lang.String"/>
+  <output name="eTag" type="java.lang.String"/>
+  <output name="versionId" type="java.lang.String"/>
+
+  <!-- Pages -->
+  <page id="connectionPage">
+    <widget xsi:type="definition:Password" id="accessKeyIdWidget" inputName="accessKeyId"/>
+    <widget xsi:type="definition:Password" id="secretAccessKeyWidget" inputName="secretAccessKey"/>
+    <widget xsi:type="definition:Password" id="sessionTokenWidget" inputName="sessionToken"/>
+    <widget xsi:type="definition:Select" id="regionWidget" inputName="region">
+      <items>us-east-1</items>
+      <items>us-east-2</items>
+      <items>us-west-1</items>
+      <items>us-west-2</items>
+      <items>eu-west-1</items>
+      <items>eu-west-2</items>
+      <items>eu-west-3</items>
+      <items>eu-central-1</items>
+      <items>ap-southeast-1</items>
+      <items>ap-southeast-2</items>
+      <items>ap-northeast-1</items>
+    </widget>
+    <widget xsi:type="definition:Checkbox" id="useDefaultCredentialChainWidget" inputName="useDefaultCredentialChain"/>
+    <widget xsi:type="definition:Text" id="connectTimeoutWidget" inputName="connectTimeout"/>
+    <widget xsi:type="definition:Text" id="readTimeoutWidget" inputName="readTimeout"/>
+  </page>
+  <page id="operationPage">
+    <widget xsi:type="definition:Text" id="sourceBucketNameWidget" inputName="sourceBucketName"/>
+    <widget xsi:type="definition:Text" id="sourceObjectKeyWidget" inputName="sourceObjectKey"/>
+  </page>
+  <page id="configurationPage">
+    <widget xsi:type="definition:Text" id="destinationBucketNameWidget" inputName="destinationBucketName"/>
+    <widget xsi:type="definition:Text" id="destinationObjectKeyWidget" inputName="destinationObjectKey"/>
+    <widget xsi:type="definition:Select" id="storageClassWidget" inputName="storageClass">
+      <items>STANDARD</items>
+      <items>INTELLIGENT_TIERING</items>
+      <items>STANDARD_IA</items>
+      <items>ONEZONE_IA</items>
+      <items>GLACIER_IR</items>
+      <items>GLACIER</items>
+      <items>DEEP_ARCHIVE</items>
+    </widget>
+  </page>
+  <page id="advancedPage">
+    <widget xsi:type="definition:Text" id="sourceVersionIdWidget" inputName="sourceVersionId"/>
+    <widget xsi:type="definition:Checkbox" id="replaceMetadataWidget" inputName="replaceMetadata"/>
+    <widget xsi:type="definition:Array" id="newMetadataWidget" inputName="newMetadata"/>
+  </page>
+</definition:ConnectorDefinition>

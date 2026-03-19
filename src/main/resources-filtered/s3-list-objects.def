@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition:ConnectorDefinition
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1">
+  <id>${list-objects.def.id}</id>
+  <version>${list-objects.def.version}</version>
+  <icon>s3-icon.png</icon>
+  <category icon="s3-icon.png" id="AWS S3"/>
+
+  <!-- Connection inputs -->
+  <input name="accessKeyId" type="java.lang.String" mandatory="false"/>
+  <input name="secretAccessKey" type="java.lang.String" mandatory="false"/>
+  <input name="sessionToken" type="java.lang.String" mandatory="false"/>
+  <input name="region" type="java.lang.String" mandatory="true"/>
+  <input name="useDefaultCredentialChain" type="java.lang.Boolean" mandatory="false" defaultValue="false"/>
+  <input name="connectTimeout" type="java.lang.Integer" mandatory="false" defaultValue="30000"/>
+  <input name="readTimeout" type="java.lang.Integer" mandatory="false" defaultValue="60000"/>
+
+  <!-- Operation inputs -->
+  <input name="bucketName" type="java.lang.String" mandatory="true"/>
+  <input name="prefix" type="java.lang.String" mandatory="false"/>
+  <input name="delimiter" type="java.lang.String" mandatory="false" defaultValue="/"/>
+  <input name="maxKeys" type="java.lang.Integer" mandatory="false" defaultValue="1000"/>
+  <input name="continuationToken" type="java.lang.String" mandatory="false"/>
+
+  <!-- Outputs -->
+  <output name="success" type="java.lang.Boolean"/>
+  <output name="errorMessage" type="java.lang.String"/>
+  <output name="objects" type="java.util.List"/>
+  <output name="commonPrefixes" type="java.util.List"/>
+  <output name="totalCount" type="java.lang.Integer"/>
+  <output name="isTruncated" type="java.lang.Boolean"/>
+  <output name="nextContinuationToken" type="java.lang.String"/>
+
+  <!-- Pages -->
+  <page id="connectionPage">
+    <widget xsi:type="definition:Password" id="accessKeyIdWidget" inputName="accessKeyId"/>
+    <widget xsi:type="definition:Password" id="secretAccessKeyWidget" inputName="secretAccessKey"/>
+    <widget xsi:type="definition:Password" id="sessionTokenWidget" inputName="sessionToken"/>
+    <widget xsi:type="definition:Select" id="regionWidget" inputName="region">
+      <items>us-east-1</items>
+      <items>us-east-2</items>
+      <items>us-west-1</items>
+      <items>us-west-2</items>
+      <items>eu-west-1</items>
+      <items>eu-west-2</items>
+      <items>eu-west-3</items>
+      <items>eu-central-1</items>
+      <items>ap-southeast-1</items>
+      <items>ap-southeast-2</items>
+      <items>ap-northeast-1</items>
+    </widget>
+    <widget xsi:type="definition:Checkbox" id="useDefaultCredentialChainWidget" inputName="useDefaultCredentialChain"/>
+    <widget xsi:type="definition:Text" id="connectTimeoutWidget" inputName="connectTimeout"/>
+    <widget xsi:type="definition:Text" id="readTimeoutWidget" inputName="readTimeout"/>
+  </page>
+  <page id="operationPage">
+    <widget xsi:type="definition:Text" id="bucketNameWidget" inputName="bucketName"/>
+    <widget xsi:type="definition:Text" id="prefixWidget" inputName="prefix"/>
+  </page>
+  <page id="configurationPage">
+    <widget xsi:type="definition:Text" id="delimiterWidget" inputName="delimiter"/>
+    <widget xsi:type="definition:Text" id="maxKeysWidget" inputName="maxKeys"/>
+  </page>
+  <page id="advancedPage">
+    <widget xsi:type="definition:Text" id="continuationTokenWidget" inputName="continuationToken"/>
+  </page>
+</definition:ConnectorDefinition>

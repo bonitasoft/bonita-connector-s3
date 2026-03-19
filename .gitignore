@@ -30,4 +30,5 @@ desktop.ini
 
 # Build
 *.log
+*.class
 hs_err_pid*
