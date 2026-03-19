@@ -45,14 +45,23 @@ jobs:
             REPO: ${{ github.repository }}
             PR NUMBER: ${{ steps.pr-number.outputs.pr_number }}
 
-            Please review this pull request and provide feedback on:
-            - Code quality and best practices
-            - Potential bugs or issues
-            - Performance considerations
-            - Security concerns
-            - Test coverage
+            You are reviewing a Bonita BPM connector for AWS S3. This is a production connector that will be deployed to enterprise Bonita environments.
 
-            Use the repository's CLAUDE.md for guidance on style and conventions. Be constructive and helpful in your feedback.
+            INSTRUCTIONS:
+            1. Read the CLAUDE.md file first — it contains detailed review checklists under "Code Review Guidelines"
+            2. Run EVERY checklist item against the changed files (Security, Code Quality, Test Quality)
+            3. For each checklist item, mark it PASS or FAIL with a brief explanation
+            4. Flag ALL violations — do not skip items or give the benefit of the doubt
+            5. If you find a security issue, mark it with 🔴 CRITICAL
+            6. After the checklists, add a free-form section for any issues not covered by the checklists
+
+            Review scope (in priority order):
+            1. **Security** — credential handling, input validation, error message leakage, resource cleanup, OWASP top 10
+            2. **Correctness** — outputs always set, retry logic, Bonita descriptor files (.def/.impl/.properties)
+            3. **Test quality** — no stubs, meaningful assertions, edge cases, mock injection pattern, property tests
+            4. **Code quality** — logging, exception handling, Java 17 idioms, flat package structure
+
+            Be thorough and specific. Reference exact file names and line numbers. If something looks fine, say so briefly and move on. Spend the most time on things that are wrong.
 
             POST YOUR REVIEW BY UPDATING AN EXISTING CODE REVIEW COMMENT if exists, or by CREATING A NEW COMMENT otherwise:
 
