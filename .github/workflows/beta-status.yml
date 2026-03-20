@@ -5,6 +5,10 @@ on:
     types: [opened, edited, labeled, closed]
   workflow_dispatch:
 
+concurrency:
+  group: beta-status
+  cancel-in-progress: true
+
 permissions:
   contents: write
   issues: write
@@ -249,6 +253,7 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "chore: update beta status tracking files"
+            git pull --rebase origin main || true
             git push
           fi
 
