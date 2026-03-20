@@ -71,7 +71,7 @@ Releases are managed via GitHub Actions. Run the "Release" workflow with the tar
 - [ ] **No `System.out.println`.** All logging via `@Slf4j` only (`log.info/debug/warn/error`).
 - [ ] **No raw `Exception` catches.** Catch specific exceptions (`S3Exception`, `software.amazon.awssdk.services.s3.model.S3Exception`), wrap in project `S3Exception`. The only catch-all is in `executeBusinessLogic()` at the abstract level.
 - [ ] **Retry policy correctness.** Only HTTP 429, 500, 502, 503, 504 are retryable. 400/401/403/404 must fail immediately. Verify `isRetryable()` flag is set correctly when mapping AWS exceptions.
-- [ ] **Version is release.** POM version must be `X.Y.Z` (e.g., `1.0.0`), NEVER `-SNAPSHOT`. SNAPSHOT versions cause Bonita Studio import failures.
+- [ ] **Version format.** POM version must be `X.Y.Z` or `X.Y.Z-beta.N` (e.g., `1.0.0` or `1.0.0-beta.1`), NEVER `-SNAPSHOT`. SNAPSHOT versions cause Bonita Studio import failures. Beta versions are expected for connectors not yet validated in real environments.
 - [ ] **Java 17 features used appropriately.** Records for model objects, text blocks where helpful. No records for mutable state.
 - [ ] **`.impl` file correctness.** Namespace must be `6.0` (not `6.1`). Element order must match XSD: `implementationId → implementationVersion → definitionId → definitionVersion → implementationClassname → hasSources → description → jarDependencies`. `<hasSources>false</hasSources>` must be present.
 - [ ] **`.def` file correctness.** Namespace must be `6.1`. Widget IDs follow `{inputName}Widget` convention. All inputs have correct `type` and `mandatory` attributes.

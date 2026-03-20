@@ -6,7 +6,7 @@
 
 	<groupId>org.bonitasoft.connectors</groupId>
 	<artifactId>bonita-connector-s3</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.0-beta.1</version>
 
 	<name>Bonita AWS S3 Connector</name>
 	<description>AWS S3 Connectors for Bonita</description>
@@ -38,56 +38,56 @@
 
 		<!-- Upload Object -->
 		<upload-object.def.id>s3-upload-object</upload-object.def.id>
-		<upload-object.def.version>1.0.0</upload-object.def.version>
+		<upload-object.def.version>1.0.0-beta.1</upload-object.def.version>
 		<upload-object.impl.id>${upload-object.def.id}-impl</upload-object.impl.id>
 		<upload-object.impl.version>${project.version}</upload-object.impl.version>
 		<upload-object.main-class>com.bonitasoft.connectors.s3.UploadObjectConnector</upload-object.main-class>
 
 		<!-- Download Object -->
 		<download-object.def.id>s3-download-object</download-object.def.id>
-		<download-object.def.version>1.0.0</download-object.def.version>
+		<download-object.def.version>1.0.0-beta.1</download-object.def.version>
 		<download-object.impl.id>${download-object.def.id}-impl</download-object.impl.id>
 		<download-object.impl.version>${project.version}</download-object.impl.version>
 		<download-object.main-class>com.bonitasoft.connectors.s3.DownloadObjectConnector</download-object.main-class>
 
 		<!-- Delete Object -->
 		<delete-object.def.id>s3-delete-object</delete-object.def.id>
-		<delete-object.def.version>1.0.0</delete-object.def.version>
+		<delete-object.def.version>1.0.0-beta.1</delete-object.def.version>
 		<delete-object.impl.id>${delete-object.def.id}-impl</delete-object.impl.id>
 		<delete-object.impl.version>${project.version}</delete-object.impl.version>
 		<delete-object.main-class>com.bonitasoft.connectors.s3.DeleteObjectConnector</delete-object.main-class>
 
 		<!-- Copy Object -->
 		<copy-object.def.id>s3-copy-object</copy-object.def.id>
-		<copy-object.def.version>1.0.0</copy-object.def.version>
+		<copy-object.def.version>1.0.0-beta.1</copy-object.def.version>
 		<copy-object.impl.id>${copy-object.def.id}-impl</copy-object.impl.id>
 		<copy-object.impl.version>${project.version}</copy-object.impl.version>
 		<copy-object.main-class>com.bonitasoft.connectors.s3.CopyObjectConnector</copy-object.main-class>
 
 		<!-- Head Object -->
 		<head-object.def.id>s3-head-object</head-object.def.id>
-		<head-object.def.version>1.0.0</head-object.def.version>
+		<head-object.def.version>1.0.0-beta.1</head-object.def.version>
 		<head-object.impl.id>${head-object.def.id}-impl</head-object.impl.id>
 		<head-object.impl.version>${project.version}</head-object.impl.version>
 		<head-object.main-class>com.bonitasoft.connectors.s3.HeadObjectConnector</head-object.main-class>
 
 		<!-- List Objects -->
 		<list-objects.def.id>s3-list-objects</list-objects.def.id>
-		<list-objects.def.version>1.0.0</list-objects.def.version>
+		<list-objects.def.version>1.0.0-beta.1</list-objects.def.version>
 		<list-objects.impl.id>${list-objects.def.id}-impl</list-objects.impl.id>
 		<list-objects.impl.version>${project.version}</list-objects.impl.version>
 		<list-objects.main-class>com.bonitasoft.connectors.s3.ListObjectsConnector</list-objects.main-class>
 
 		<!-- Generate Presigned URL -->
 		<generate-presigned-url.def.id>s3-generate-presigned-url</generate-presigned-url.def.id>
-		<generate-presigned-url.def.version>1.0.0</generate-presigned-url.def.version>
+		<generate-presigned-url.def.version>1.0.0-beta.1</generate-presigned-url.def.version>
 		<generate-presigned-url.impl.id>${generate-presigned-url.def.id}-impl</generate-presigned-url.impl.id>
 		<generate-presigned-url.impl.version>${project.version}</generate-presigned-url.impl.version>
 		<generate-presigned-url.main-class>com.bonitasoft.connectors.s3.GeneratePresignedUrlConnector</generate-presigned-url.main-class>
 
 		<!-- Multipart Upload -->
 		<multipart-upload.def.id>s3-multipart-upload</multipart-upload.def.id>
-		<multipart-upload.def.version>1.0.0</multipart-upload.def.version>
+		<multipart-upload.def.version>1.0.0-beta.1</multipart-upload.def.version>
 		<multipart-upload.impl.id>${multipart-upload.def.id}-impl</multipart-upload.impl.id>
 		<multipart-upload.impl.version>${project.version}</multipart-upload.impl.version>
 		<multipart-upload.main-class>com.bonitasoft.connectors.s3.MultipartUploadConnector</multipart-upload.main-class>
