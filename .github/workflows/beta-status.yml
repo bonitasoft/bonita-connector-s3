@@ -261,13 +261,33 @@ jobs:
       # 9. Update Confluence dashboard (placeholder)
       # -----------------------------------------------------------
       - name: Update Confluence dashboard
+        env:
+          CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
+          CONFLUENCE_USER_EMAIL: ${{ secrets.CONFLUENCE_USER_EMAIL }}
         run: |
-          if [ -n "${{ secrets.CONFLUENCE_API_TOKEN }}" ]; then
-            echo "CONFLUENCE_API_TOKEN is available. Confluence update would happen here."
-            echo "TODO: Implement Confluence API call to update dashboard."
-          else
-            echo "CONFLUENCE_API_TOKEN not configured. Skipping Confluence update."
+          if [ -z "$CONFLUENCE_API_TOKEN" ] || [ -z "$CONFLUENCE_USER_EMAIL" ]; then
+            echo "Confluence secrets not configured. Skipping Confluence update."
+            exit 0
           fi
+
+          CONFLUENCE_PAGE_ID="25034817547"
+          CONFLUENCE_CLOUD_ID="bonitasoft.atlassian.net"
+          CONNECTOR='${{ steps.info.outputs.artifact_id }}'
+          TOTAL='${{ steps.status.outputs.total }}'
+          VALIDATED='${{ steps.status.outputs.validated }}'
+          ALL_VALIDATED='${{ steps.status.outputs.all_validated }}'
+
+          REMAINING=$(jq -r '[.operations | to_entries[] | select(.value.status == "untested") | .key | sub("^[^-]+-"; "")] | join(", ")' beta-status.json)
+          STATUS=$( [ "$ALL_VALIDATED" = "true" ] && echo "Released" || echo "Beta" )
+
+          BODY="## Beta Status Dashboard\n\n*Auto-updated by the beta-status GitHub Action workflow.*\n\n| Connector | Operations | Validated | Remaining | Status |\n| --- | --- | --- | --- | --- |\n| [${CONNECTOR}](https://github.com/bonitasoft/${CONNECTOR}) | ${TOTAL} | ${VALIDATED}/${TOTAL} | ${REMAINING:-—} | ${STATUS} |\n\n---\n\nLast updated: $(date -u '+%Y-%m-%d %H:%M UTC')"
+
+          curl -s -X PUT \
+            "https://${CONFLUENCE_CLOUD_ID}/wiki/api/v2/pages/${CONFLUENCE_PAGE_ID}" \
+            -H "Authorization: Basic $(echo -n "${CONFLUENCE_USER_EMAIL}:${CONFLUENCE_API_TOKEN}" | base64)" \
+            -H "Content-Type: application/json" \
+            -d "{\"id\":\"${CONFLUENCE_PAGE_ID}\",\"status\":\"current\",\"title\":\"Beta Status Dashboard\",\"body\":{\"representation\":\"wiki\",\"value\":\"$(echo -e "$BODY" | sed 's/"/\\"/g')\"},\"version\":{\"number\":$(curl -s "https://${CONFLUENCE_CLOUD_ID}/wiki/api/v2/pages/${CONFLUENCE_PAGE_ID}" -H "Authorization: Basic $(echo -n "${CONFLUENCE_USER_EMAIL}:${CONFLUENCE_API_TOKEN}" | base64)" | jq '.version.number + 1')}}" \
+            -o /dev/null -w "Confluence update: HTTP %{http_code}"
 
       # -----------------------------------------------------------
       # 10. Check graduation eligibility
