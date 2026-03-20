@@ -9,6 +9,6 @@
     "s3-head-object": { "status": "untested", "issue": null, "version": null },
     "s3-list-objects": { "status": "untested", "issue": null, "version": null },
     "s3-multipart-upload": { "status": "untested", "issue": null, "version": null },
-    "s3-upload-object": { "status": "untested", "issue": null, "version": null }
+    "s3-upload-object": { "status": "validated", "issue": 8, "version": "1.0.0-beta.1" }
   }
 }
