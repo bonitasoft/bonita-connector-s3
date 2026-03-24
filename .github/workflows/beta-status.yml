@@ -384,6 +384,15 @@ jobs:
           PR_BODY+="- Updated beta-status.json and BETA_STATUS.md"$'\n\n'
           PR_BODY+="**Do not auto-merge.** Review and merge manually after verification."
 
+          # Derive documentation page name from artifact ID
+          DOC_NAME=$(echo "$ARTIFACT" | sed 's/bonita-connector-//')
+
+          PR_BODY+=$'\n\n'"### Post-merge checklist"$'\n\n'
+          PR_BODY+="After merging this graduation PR:"$'\n\n'
+          PR_BODY+="- [ ] Update \`bonita-doc\` (branch \`2024.3\`): remove the \`[WARNING]\` beta block from \`modules/process/pages/${DOC_NAME}-connector.adoc\`"$'\n'
+          PR_BODY+="- [ ] Update \`bonita-doc\` (branch \`2024.3\`): move the connector card from \"Bonita official connectors [BETA]\" to \"Bonita official connectors\" in \`modules/process/pages/connectors-index.adoc\` and remove \`[BETA]\` from the card title"$'\n'
+          PR_BODY+="- [ ] Verify the changes render correctly in the documentation preview"
+
           gh pr create \
             --base "$DEFAULT_BRANCH" \
             --head "$BRANCH_NAME" \
