@@ -46,7 +46,7 @@ jobs:
         id: operations
         run: |
           echo "Extracting *.def.id property values from pom.xml..."
-          OPERATIONS=$(grep -oP '(?<=<)[a-z0-9-]+\.def\.id(?=>)' pom.xml \
+          OPERATIONS=$(grep -oP '(?<=<)[a-z0-9.-]+\.def\.id(?=>)' pom.xml \
             | sed 's/\.def\.id//' \
             | sort)
           echo "Operation property prefixes:"
