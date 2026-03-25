@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <implementation:connectorImplementation xmlns:implementation="http://www.bonitasoft.org/ns/connector/implementation/6.0">
-  <implementationId>${upload-object.impl.id}</implementationId>
-  <implementationVersion>${upload-object.impl.version}</implementationVersion>
-  <definitionId>${upload-object.def.id}</definitionId>
-  <definitionVersion>${upload-object.def.version}</definitionVersion>
-  <implementationClassname>${upload-object.main-class}</implementationClassname>
+  <implementationId>${s3-upload-object.impl.id}</implementationId>
+  <implementationVersion>${s3-upload-object.impl.version}</implementationVersion>
+  <definitionId>${s3-upload-object.def.id}</definitionId>
+  <definitionVersion>${s3-upload-object.def.version}</definitionVersion>
+  <implementationClassname>${s3-upload-object.main-class}</implementationClassname>
   <hasSources>false</hasSources>
   <description>AWS S3 Upload Object connector implementation</description>
 ${connector-dependencies}

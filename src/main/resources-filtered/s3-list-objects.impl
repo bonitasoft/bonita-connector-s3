@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <implementation:connectorImplementation xmlns:implementation="http://www.bonitasoft.org/ns/connector/implementation/6.0">
-  <implementationId>${list-objects.impl.id}</implementationId>
-  <implementationVersion>${list-objects.impl.version}</implementationVersion>
-  <definitionId>${list-objects.def.id}</definitionId>
-  <definitionVersion>${list-objects.def.version}</definitionVersion>
-  <implementationClassname>${list-objects.main-class}</implementationClassname>
+  <implementationId>${s3-list-objects.impl.id}</implementationId>
+  <implementationVersion>${s3-list-objects.impl.version}</implementationVersion>
+  <definitionId>${s3-list-objects.def.id}</definitionId>
+  <definitionVersion>${s3-list-objects.def.version}</definitionVersion>
+  <implementationClassname>${s3-list-objects.main-class}</implementationClassname>
   <hasSources>false</hasSources>
   <description>AWS S3 List Objects connector implementation</description>
 ${connector-dependencies}

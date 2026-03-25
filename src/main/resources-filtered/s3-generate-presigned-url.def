@@ -2,8 +2,8 @@
 <definition:ConnectorDefinition
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1">
-  <id>${generate-presigned-url.def.id}</id>
-  <version>${generate-presigned-url.def.version}</version>
+  <id>${s3-generate-presigned-url.def.id}</id>
+  <version>${s3-generate-presigned-url.def.version}</version>
   <icon>s3-icon.png</icon>
   <category icon="s3-icon.png" id="AWS S3"/>
 

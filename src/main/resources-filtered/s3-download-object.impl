@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <implementation:connectorImplementation xmlns:implementation="http://www.bonitasoft.org/ns/connector/implementation/6.0">
-  <implementationId>${download-object.impl.id}</implementationId>
-  <implementationVersion>${download-object.impl.version}</implementationVersion>
-  <definitionId>${download-object.def.id}</definitionId>
-  <definitionVersion>${download-object.def.version}</definitionVersion>
-  <implementationClassname>${download-object.main-class}</implementationClassname>
+  <implementationId>${s3-download-object.impl.id}</implementationId>
+  <implementationVersion>${s3-download-object.impl.version}</implementationVersion>
+  <definitionId>${s3-download-object.def.id}</definitionId>
+  <definitionVersion>${s3-download-object.def.version}</definitionVersion>
+  <implementationClassname>${s3-download-object.main-class}</implementationClassname>
   <hasSources>false</hasSources>
   <description>AWS S3 Download Object connector implementation</description>
 ${connector-dependencies}

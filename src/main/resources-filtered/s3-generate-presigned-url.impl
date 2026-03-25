@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <implementation:connectorImplementation xmlns:implementation="http://www.bonitasoft.org/ns/connector/implementation/6.0">
-  <implementationId>${generate-presigned-url.impl.id}</implementationId>
-  <implementationVersion>${generate-presigned-url.impl.version}</implementationVersion>
-  <definitionId>${generate-presigned-url.def.id}</definitionId>
-  <definitionVersion>${generate-presigned-url.def.version}</definitionVersion>
-  <implementationClassname>${generate-presigned-url.main-class}</implementationClassname>
+  <implementationId>${s3-generate-presigned-url.impl.id}</implementationId>
+  <implementationVersion>${s3-generate-presigned-url.impl.version}</implementationVersion>
+  <definitionId>${s3-generate-presigned-url.def.id}</definitionId>
+  <definitionVersion>${s3-generate-presigned-url.def.version}</definitionVersion>
+  <implementationClassname>${s3-generate-presigned-url.main-class}</implementationClassname>
   <hasSources>false</hasSources>
   <description>AWS S3 Generate Presigned URL connector implementation</description>
 ${connector-dependencies}

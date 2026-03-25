@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <implementation:connectorImplementation xmlns:implementation="http://www.bonitasoft.org/ns/connector/implementation/6.0">
-  <implementationId>${delete-object.impl.id}</implementationId>
-  <implementationVersion>${delete-object.impl.version}</implementationVersion>
-  <definitionId>${delete-object.def.id}</definitionId>
-  <definitionVersion>${delete-object.def.version}</definitionVersion>
-  <implementationClassname>${delete-object.main-class}</implementationClassname>
+  <implementationId>${s3-delete-object.impl.id}</implementationId>
+  <implementationVersion>${s3-delete-object.impl.version}</implementationVersion>
+  <definitionId>${s3-delete-object.def.id}</definitionId>
+  <definitionVersion>${s3-delete-object.def.version}</definitionVersion>
+  <implementationClassname>${s3-delete-object.main-class}</implementationClassname>
   <hasSources>false</hasSources>
   <description>AWS S3 Delete Object connector implementation</description>
 ${connector-dependencies}
