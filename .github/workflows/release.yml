@@ -34,7 +34,9 @@ jobs:
           event-type: new-connector-release
           client-payload: >-
             {
-              "artifactId": "CHANGE_ME",
+              "artifactId": "bonita-connector-s3",
               "version": "${{ inputs.version }}",
-              "bonitaMinVersion": "CHANGE_ME"
+              "bonitaMinVersion": "10.2.0",
+              "connectorName": "AWS S3",
+              "iconUrl": "https://raw.githubusercontent.com/bonitasoft/bonita-connector-s3/main/src/main/resources/s3-icon.png"
             }
