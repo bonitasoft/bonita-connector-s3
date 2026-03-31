@@ -1,14 +1,14 @@
 {
   "connector": "bonita-connector-s3",
-  "currentVersion": "1.0.0-beta.1",
+  "currentVersion": "1.0.0",
   "operations": {
-    "s3-copy-object": { "status": "untested", "issue": null, "version": null },
-    "s3-delete-object": { "status": "untested", "issue": null, "version": null },
-    "s3-download-object": { "status": "untested", "issue": null, "version": null },
-    "s3-generate-presigned-url": { "status": "untested", "issue": null, "version": null },
-    "s3-head-object": { "status": "untested", "issue": null, "version": null },
-    "s3-list-objects": { "status": "untested", "issue": null, "version": null },
-    "s3-multipart-upload": { "status": "untested", "issue": null, "version": null },
-    "s3-upload-object": { "status": "validated", "issue": 8, "version": "1.0.0-beta.1" }
+    "s3-copy-object": { "status": "released", "issue": null, "version": "1.0.0" },
+    "s3-delete-object": { "status": "released", "issue": null, "version": "1.0.0" },
+    "s3-download-object": { "status": "released", "issue": null, "version": "1.0.0" },
+    "s3-generate-presigned-url": { "status": "released", "issue": null, "version": "1.0.0" },
+    "s3-head-object": { "status": "released", "issue": null, "version": "1.0.0" },
+    "s3-list-objects": { "status": "released", "issue": null, "version": "1.0.0" },
+    "s3-multipart-upload": { "status": "released", "issue": null, "version": "1.0.0" },
+    "s3-upload-object": { "status": "released", "issue": 8, "version": "1.0.0" }
   }
 }
